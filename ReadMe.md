@@ -2,6 +2,11 @@
 
 Flask-based server that supports handling request from the Next.js front-end application.
 
+<!-- Banner Image -->
+<div align="center">
+  <img width="400" src="images/BlocBondLogo.png" alt="BlocBond Logo" />
+</div>
+
 ## Prerequisites
 
 Python 3.12 or higher
