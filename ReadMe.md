@@ -23,16 +23,17 @@ docker run --rm --env-file .env -p 8080:8080 -it $(docker build -q .)
 ## Manual deploy to Google Cloud Run
 
 1. Install Google Cloud CLI - https://cloud.google.com/sdk/docs/install-sdk
-2. Run the following commands. Note that 'tucon-cce32' is the firebase projectID.
+2. Run the following commands. Note that 'gdschackathon2024-422307' is the projectID.
 
 ```bash
 gcloud init
-# note: you may need to set environment variables for the below to work
+
 gcloud run deploy src --region=us-east1 --source=.
 ```
 
 ## Useful links
 
-Firebase project: 
+GCP Platform: https://cloud.google.com/
+Flask WebServer: https://flask.palletsprojects.com/en/3.0.x/
 
 
