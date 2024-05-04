@@ -1,4 +1,4 @@
-# Backend for ClimbingApp
+# Backend for BlocBond
 
 Flask-based server that supports handling request from the Next.js front-end application.
 
