@@ -5,6 +5,7 @@ from google.oauth2 import service_account
 import os
 from datetime import datetime, timedelta
 import json
+import base64
 
 indoor_map = [ "maps/indoor_map_generic.png", 
                "maps/indoor_map_generic.png", 
@@ -14,9 +15,9 @@ custom_gym_header = [ "gym_header/generic_header.png",
                       "gym_header/guelph_atl_center.png", 
                       "gym_header/grr_header.png" ]
 
-gym_routes_arr = { "1": [ "grotto/redholds.png", "grotto/whiteholds.png"], 
-                   "2": ["uog/blueholds.png", "uog/redholds.png", "uog/whiteholds.png"],
-                   "3": ["grr/blackholds.png", "grr/greenholds.png", "grr/yellowholds.png"], }
+gym_routes_arr = { "1": [ "grotto/grotto_redholds.png", "grotto/grotto_whiteholds.png"], 
+                   "2": ["uog/uog_blueholds.png", "uog/uog_redholds.png", "uog/uog_whiteholds.png"],
+                   "3": ["grr/grr_blackholds.png", "grr/grr_greenholds.png", "grr/grr_yellowholds.png"], }
 
 map_id_to_folder_name = {
     "1": "grotto",
@@ -129,6 +130,25 @@ gyms_info = {
     },
 }
 
+def upload_image(binary_image_data, gcs_image_name):
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+
+    # Construct the path to your service account key file relative to the current directory
+    keyfile_path = os.path.join(current_directory, '..', '..', 'resources', 'gdschackathon2024-422307-aaca36ebdcaa.json')
+
+    credentials = service_account.Credentials.from_service_account_file(
+        keyfile_path)
+    storage_client = storage.Client(credentials=credentials)
+
+    bucket_name = 'route_images'
+    bucket = storage_client.bucket(bucket_name)
+
+    # Create a new blob and upload the file's content
+    blob = bucket.blob(gcs_image_name)
+    blob.upload_from_filename(binary_image_data, content_type='image/png')
+
+    print(f'File {binary_image_data} uploaded to {bucket_name} as {gcs_image_name}')
+
 def generate_signed_url(file_name_path):
     current_directory = os.path.dirname(os.path.abspath(__file__))
 
@@ -206,12 +226,17 @@ def store_climb():
     climb_type = data.get('climb_type')
     hold_type = data.get('hold_type')
     description = data.get('description')
+    image_data = data.get('image_data')
     image_name = data.get('image_name')
 
     # Do something about the photo
-    print(image_name[:32])
+    _, base64_data = image_data.split(',')
+
+    # Decode the base64-encoded image data to obtain the binary image data
+    binary_image_data = base64.b64decode(base64_data)
 
     # Upload the photo to GCS Bucket
+    upload_image(binary_image_data, image_name)
 
     # construct new json object - climb_info 
     climb_info = {
