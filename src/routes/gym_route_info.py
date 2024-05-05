@@ -14,9 +14,15 @@ custom_gym_header = [ "gym_header/generic_header.png",
                       "gym_header/guelph_atl_center.png", 
                       "gym_header/grr_header.png" ]
 
-gym_routes_arr = { "1": [ "grotto/redholds", "grotto/whiteholds", "grotto/yellowholds"], 
-                   "2": ["uog/blueholds", "uog/redholds", "uog/whiteholds"],
-                   "3": ["grr/blackholds", "grr/greenholds", "grr/yellowholds"], }
+gym_routes_arr = { "1": [ "grotto/redholds.png", "grotto/whiteholds.png"], 
+                   "2": ["uog/blueholds.png", "uog/redholds.png", "uog/whiteholds.png"],
+                   "3": ["grr/blackholds.png", "grr/greenholds.png", "grr/yellowholds.png"], }
+
+map_id_to_folder_name = {
+    "1": "grotto",
+    "2": "uog",
+    "3": "grr"
+}
 
 gym_routes = {
     "1": [
@@ -37,15 +43,6 @@ gym_routes = {
             "climb_type": "overhang",
             "hold_type": "pinches",
             "description": "Fun and exciting",
-        },
-        {
-            "id": 3,
-            "climb_name": "Twins",
-            "gym_name": "The Guelph Grotto",
-            "v_rating": "V5",
-            "climb_type": "overhang",
-            "hold_type": "crimps",
-            "description": "Wowie",
         },
     ],
     "2": [
@@ -133,10 +130,10 @@ gyms_info = {
 }
 
 def generate_signed_url(file_name_path):
-    current_directory = os.path.dirname(os.path.realpath(__file__))
+    current_directory = os.path.dirname(os.path.abspath(__file__))
 
     # Construct the path to your service account key file relative to the current directory
-    keyfile_path = os.path.join(current_directory, 'gdschackathon2024-422307-aaca36ebdcaa.json')
+    keyfile_path = os.path.join(current_directory, '..', '..', 'resources', 'gdschackathon2024-422307-aaca36ebdcaa.json')
 
     credentials = service_account.Credentials.from_service_account_file(
         keyfile_path)
@@ -154,8 +151,7 @@ def generate_signed_url(file_name_path):
 
 @app.route('/routes', methods=['GET'])
 def get_routes():
-    data = json.loads(request.data.decode('utf-8'))
-    gym = data.get('gym')
+    gym = str(request.args.get('gym'))
 
     if gym == "all":
         # return all the routes
@@ -198,6 +194,38 @@ def get_gyms():
     print(gyms_info)
     return gyms_info, 200
 
+@app.route('/store_climb', methods=['POST'])
+def store_climb():
+    data = json.loads(request.data.decode('utf-8'))
 
+    gym_id = data.get('gym_id')
+    climb_name = data.get('climb_name')
+    gym_name = data.get('gym_name')
+    v_rating = data.get('v_rating')
+    climb_type = data.get('climb_type')
+    hold_type = data.get('hold_type')
+    description = data.get('description')
+    image_name = data.get('image_name')
 
-    
+    # Do something about the photo
+    # Upload the photo to GCS Bucket
+
+    # construct new json object - climb_info 
+    climb_info = {
+        "climb_name": climb_name,
+        "gym_name": gym_name,
+        "v_rating": v_rating,
+        "climb_type": climb_type,
+        "hold_type": hold_type,
+        "description": description
+    }
+
+    if gym_id in gym_routes_arr and gym_id in gym_routes:
+        gym_routes_arr[gym_id].append(map_id_to_folder_name[gym_id] + "/" + image_name)
+        gym_routes[gym_id].append(climb_info)
+    else:
+        print(f"ID '{gym_id}' not found. Can't store the climb")
+        return "Failure. Can't store the climb", 400
+
+    print(gym_routes)
+    return "Success", 200
