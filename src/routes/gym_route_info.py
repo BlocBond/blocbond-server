@@ -145,7 +145,7 @@ def upload_image(binary_image_data, gcs_image_name):
 
     # Create a new blob and upload the file's content
     blob = bucket.blob(gcs_image_name)
-    blob.upload_from_filename(binary_image_data, content_type='image/png')
+    blob.upload_from_string(binary_image_data, content_type='image/png')
 
     print(f'File {binary_image_data} uploaded to {bucket_name} as {gcs_image_name}')
 
@@ -236,7 +236,7 @@ def store_climb():
     binary_image_data = base64.b64decode(base64_data)
 
     # Upload the photo to GCS Bucket
-    upload_image(binary_image_data, image_name)
+    upload_image(binary_image_data, map_id_to_folder_name[gym_id] + "/" + image_name)
 
     # construct new json object - climb_info 
     climb_info = {
