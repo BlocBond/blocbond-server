@@ -197,6 +197,7 @@ def get_gyms():
 @app.route('/store_climb', methods=['POST'])
 def store_climb():
     data = json.loads(request.data.decode('utf-8'))
+    # print(data)
 
     gym_id = data.get('gym_id')
     climb_name = data.get('climb_name')
@@ -208,6 +209,8 @@ def store_climb():
     image_name = data.get('image_name')
 
     # Do something about the photo
+    print(image_name[:32])
+
     # Upload the photo to GCS Bucket
 
     # construct new json object - climb_info 
