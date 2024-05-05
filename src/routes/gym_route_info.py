@@ -4,9 +4,19 @@ from google.cloud import storage
 from google.oauth2 import service_account
 import os
 from datetime import datetime, timedelta
+import json
 
-indoor_map = ["maps/indoor_map_generic.png", "maps/indoor_map_generic.png", "maps/indoor_map_generic.png"]
-custom_gym_header = ["gym_header/generic_header.png", "gym_header/guelph_atl_center.png", "gym_header/grr_header.png"]
+indoor_map = [ "maps/indoor_map_generic.png", 
+               "maps/indoor_map_generic.png", 
+               "maps/indoor_map_generic.png" ]
+
+custom_gym_header = [ "gym_header/generic_header.png", 
+                      "gym_header/guelph_atl_center.png", 
+                      "gym_header/grr_header.png" ]
+
+gym_routes_arr = { "1": [ "grotto/redholds", "grotto/whiteholds", "grotto/yellowholds"], 
+                   "2": ["uog/blueholds", "uog/redholds", "uog/whiteholds"],
+                   "3": ["grr/blackholds", "grr/greenholds", "grr/yellowholds"], }
 
 gym_routes = {
     "1": [
@@ -14,54 +24,54 @@ gym_routes = {
             "id": 1,
             "climb_name": "Helicopter",
             "gym_name": "The Guelph Grotto",
-            "v_rating": "V7",
-            "climb_type": "overhang",
+            "v_rating": "V3",
+            "climb_type": "dyno",
             "hold_type": "crimps",
-            "description": "Fun and exciting",
+            "description": "Fun and cool",
         },
         {
             "id": 2,
-            "climb_name": "Helicopter",
+            "climb_name": "Precise and gentle",
             "gym_name": "The Guelph Grotto",
-            "v_rating": "V7",
+            "v_rating": "V2",
             "climb_type": "overhang",
-            "hold_type": "crimps",
+            "hold_type": "pinches",
             "description": "Fun and exciting",
         },
         {
             "id": 3,
-            "climb_name": "Helicopter",
+            "climb_name": "Twins",
             "gym_name": "The Guelph Grotto",
-            "v_rating": "V7",
+            "v_rating": "V5",
             "climb_type": "overhang",
             "hold_type": "crimps",
-            "description": "Fun and exciting",
+            "description": "Wowie",
         },
     ],
     "2": [
         {
             "id": 1,
-            "climb_name": "Helicopter",
+            "climb_name": "Who is next",
             "gym_name": "Guelph Athletics Center",
             "v_rating": "V7",
             "climb_type": "overhang",
             "hold_type": "crimps",
-            "description": "Fun and exciting",
+            "description": "Powerful",
         },
         {
             "id": 2,
-            "climb_name": "Helicopter",
+            "climb_name": "Why slab or not",
             "gym_name": "Guelph Athletics Center",
-            "v_rating": "V7",
-            "climb_type": "overhang",
-            "hold_type": "crimps",
-            "description": "Fun and exciting",
+            "v_rating": "V5",
+            "climb_type": "slab",
+            "hold_type": "small or big",
+            "description": "Cool climb",
         },
         {
             "id": 3,
-            "climb_name": "Helicopter",
+            "climb_name": "Spin and more",
             "gym_name": "Guelph Athletics Center",
-            "v_rating": "V7",
+            "v_rating": "V2",
             "climb_type": "overhang",
             "hold_type": "crimps",
             "description": "Fun and exciting",
@@ -70,30 +80,30 @@ gym_routes = {
     "3": [
         {
             "id": 1,
-            "climb_name": "Helicopter",
+            "climb_name": "Why me again?",
             "gym_name": "Grand River Rocks",
-            "v_rating": "V7",
+            "v_rating": "V5",
             "climb_type": "overhang",
             "hold_type": "crimps",
-            "description": "Fun and exciting",
+            "description": "Smile and pray",
         },
         {
             "id": 2,
-            "climb_name": "Helicopter",
+            "climb_name": "Is this a V4",
             "gym_name": "Grand River Rocks",
-            "v_rating": "V7",
+            "v_rating": "V4",
             "climb_type": "overhang",
-            "hold_type": "crimps",
-            "description": "Fun and exciting",
+            "hold_type": "jugs",
+            "description": "Footwork",
         },
         {
             "id": 3,
-            "climb_name": "Helicopter",
+            "climb_name": "Try me",
             "gym_name": "Grand River Rocks",
-            "v_rating": "V7",
-            "climb_type": "overhang",
-            "hold_type": "crimps",
-            "description": "Fun and exciting",
+            "v_rating": "V2",
+            "climb_type": "slab",
+            "hold_type": "slopers",
+            "description": "Enjoy and relax",
         },
     ],
 }
@@ -144,17 +154,34 @@ def generate_signed_url(file_name_path):
 
 @app.route('/routes', methods=['GET'])
 def get_routes():
-    data = request.json
+    data = json.loads(request.data.decode('utf-8'))
     gym = data.get('gym')
 
-    # Iterate over each gym in gym_routes dictionary
-    for gym in gym_routes:
-        image_url = generate_signed_url("grotto/helicopter.png")
+    if gym == "all":
+        # return all the routes
+        # Iterate over each gym in gym_routes dictionary and add url for the photo
 
-        for route in gym_routes[gym]:
-            # Add climbPhotoUrl to each JSON object
+        for gym in gym_routes:
+            counter = 0
+
+            for route in gym_routes[gym]:
+                image_url = generate_signed_url(gym_routes_arr[gym][counter])
+                route["climb_image_url"] = image_url
+                counter += 1
+    else:
+        climbs_to_update = gym_routes.get(gym, [])
+       
+        counter = 0
+        for route in climbs_to_update:
+            image_url = generate_signed_url(gym_routes_arr[gym][counter])
             route["climb_image_url"] = image_url
+            counter += 1
+        
+        result = {gym: climbs_to_update}
+        print(result)
+        return result
 
+    print(gym_routes)
     return gym_routes, 200
 
 @app.route('/gyms', methods=['GET'])
