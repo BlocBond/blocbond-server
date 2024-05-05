@@ -6,6 +6,7 @@ import os
 from datetime import datetime, timedelta
 import json
 import base64
+import random
 
 indoor_map = [ "maps/indoor_map_generic.png", 
                "maps/indoor_map_generic.png", 
@@ -31,6 +32,7 @@ gym_routes = {
             "id": 1,
             "climb_name": "Helicopter",
             "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
             "v_rating": "V3",
             "climb_type": "dyno",
             "hold_type": "crimps",
@@ -40,6 +42,7 @@ gym_routes = {
             "id": 2,
             "climb_name": "Precise and gentle",
             "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
             "v_rating": "V2",
             "climb_type": "overhang",
             "hold_type": "pinches",
@@ -51,6 +54,7 @@ gym_routes = {
             "id": 1,
             "climb_name": "Who is next",
             "gym_name": "Guelph Athletics Center",
+            "gym_id": "2",
             "v_rating": "V7",
             "climb_type": "overhang",
             "hold_type": "crimps",
@@ -60,6 +64,7 @@ gym_routes = {
             "id": 2,
             "climb_name": "Why slab or not",
             "gym_name": "Guelph Athletics Center",
+            "gym_id": "2",
             "v_rating": "V5",
             "climb_type": "slab",
             "hold_type": "small or big",
@@ -69,6 +74,7 @@ gym_routes = {
             "id": 3,
             "climb_name": "Spin and more",
             "gym_name": "Guelph Athletics Center",
+            "gym_id": "2",
             "v_rating": "V2",
             "climb_type": "overhang",
             "hold_type": "crimps",
@@ -80,6 +86,7 @@ gym_routes = {
             "id": 1,
             "climb_name": "Why me again?",
             "gym_name": "Grand River Rocks",
+            "gym_id": "3",
             "v_rating": "V5",
             "climb_type": "overhang",
             "hold_type": "crimps",
@@ -89,6 +96,7 @@ gym_routes = {
             "id": 2,
             "climb_name": "Is this a V4",
             "gym_name": "Grand River Rocks",
+            "gym_id": "3",
             "v_rating": "V4",
             "climb_type": "overhang",
             "hold_type": "jugs",
@@ -98,6 +106,7 @@ gym_routes = {
             "id": 3,
             "climb_name": "Try me",
             "gym_name": "Grand River Rocks",
+            "gym_id": "3",
             "v_rating": "V2",
             "climb_type": "slab",
             "hold_type": "slopers",
@@ -239,9 +248,12 @@ def store_climb():
     upload_image(binary_image_data, map_id_to_folder_name[gym_id] + "/" + image_name)
 
     # construct new json object - climb_info 
+    random_id = random.randint(1000, 5000)
     climb_info = {
+        "id": random_id,
         "climb_name": climb_name,
         "gym_name": gym_name,
+        "gym_id": gym_id,
         "v_rating": v_rating,
         "climb_type": climb_type,
         "hold_type": hold_type,
