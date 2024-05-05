@@ -2,4 +2,4 @@ from src.app import app
 
 @app.route("/", methods=["GET"])
 def index():
-    return f"Welcome to Tucon backend!"
+    return f"Welcome to BlocBond backend!"

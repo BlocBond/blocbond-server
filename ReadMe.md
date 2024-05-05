@@ -39,6 +39,7 @@ gcloud run deploy src --region=us-east1 --source=.
 ## Useful links
 
 GCP Platform: https://cloud.google.com/
+
 Flask WebServer: https://flask.palletsprojects.com/en/3.0.x/
 
 
