@@ -14,7 +14,7 @@ jwt = JWTManager(app)
 
 # Import routes after app creation to avoid circular imports
 # ==== Routes ====
-from src.routes import index, auth
+from src.routes import index, auth, gym_route_info
 
 @app.errorhandler(HTTPException)
 def handle_exception(e):
