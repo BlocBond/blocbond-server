@@ -1,9 +1,12 @@
 from flask import Flask, json
 from werkzeug.exceptions import HTTPException
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 
 # Create the Flask app instance
 app = Flask(__name__)
+
+CORS(app, supports_credentials=True)
 
 # Configure JWT settings
 app.config['JWT_SECRET_KEY'] = 'secret' 
