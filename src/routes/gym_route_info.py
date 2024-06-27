@@ -10,20 +10,30 @@ import random
 
 indoor_map = [ "maps/indoor_map_generic.png", 
                "maps/indoor_map_generic.png", 
+               "maps/indoor_map_generic.png", 
+               "maps/indoor_map_generic.png", 
                "maps/indoor_map_generic.png" ]
 
 custom_gym_header = [ "gym_header/generic_header.png", 
                       "gym_header/guelph_atl_center.png", 
-                      "gym_header/grr_header.png" ]
+                      "gym_header/grr_header.png",
+                      "gym_header/generic_header.png",
+                      "gym_header/generic_header.png"
+                    ]
 
 gym_routes_arr = { "1": [ "grotto/grotto_redholds.png", "grotto/grotto_whiteholds.png"], 
                    "2": ["uog/uog_blueholds.png", "uog/uog_redholds.png", "uog/uog_whiteholds.png"],
-                   "3": ["grr/grr_blackholds.png", "grr/grr_greenholds.png", "grr/grr_yellowholds.png"], }
+                   "3": ["grr/grr_blackholds.png", "grr/grr_greenholds.png", "grr/grr_yellowholds.png"],
+                   "4": [],
+                   "5": []
+                 }
 
 map_id_to_folder_name = {
     "1": "grotto",
     "2": "uog",
-    "3": "grr"
+    "3": "grr",
+    "4": "gneiss-banks",
+    "5": "gneiss-hill"
 }
 
 gym_routes = {
@@ -113,6 +123,8 @@ gym_routes = {
             "description": "Enjoy and relax",
         },
     ],
+    "4": [],
+    "5": []
 }
 
 gyms_info = {
@@ -137,6 +149,20 @@ gyms_info = {
         "lat": 43.47542,
         "lng": -80.52020,
     },
+    "4": {
+        "id": 4,
+        "gym_name": "Gneiss Climbing - OG Banks",
+        "logo_image_url": "https://littlebuildingsolutions.com/wp-content/uploads/testimonial-image-gneissclimbing.png",
+        "lat": 49.88472564990776,
+        "lng": -119.42279193470492,
+    },
+    "5": {
+        "id": 5,
+        "gym_name": "Gneiss Climbing - Hill Security",
+        "logo_image_url": "https://littlebuildingsolutions.com/wp-content/uploads/testimonial-image-gneissclimbing.png",
+        "lat": 49.896709226472915,
+        "lng": -119.48772919235698,
+    }
 }
 
 def upload_image(binary_image_data, gcs_image_name):
