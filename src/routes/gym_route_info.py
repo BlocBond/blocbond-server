@@ -12,20 +12,23 @@ indoor_map = [ "maps/indoor_map_generic.png",
                "maps/indoor_map_generic.png", 
                "maps/indoor_map_generic.png", 
                "maps/indoor_map_generic.png", 
+               "maps/indoor_map_generic.png",
                "maps/indoor_map_generic.png" ]
 
 custom_gym_header = [ "gym_header/generic_header.png", 
                       "gym_header/guelph_atl_center.png", 
                       "gym_header/grr_header.png",
                       "gym_header/generic_header.png",
+                      "gym_header/generic_header.png",
                       "gym_header/generic_header.png"
                     ]
 
-gym_routes_arr = { "1": [ "grotto/grotto_redholds.png", "grotto/grotto_whiteholds.png"], 
-                   "2": ["uog/uog_blueholds.png", "uog/uog_redholds.png", "uog/uog_whiteholds.png"],
-                   "3": ["grr/grr_blackholds.png", "grr/grr_greenholds.png", "grr/grr_yellowholds.png"],
-                   "4": [],
-                   "5": []
+gym_routes_arr = { "1": ["grotto/Messenger_creation_b2719286-eba7-4689-84a5-c59da129dff9.jpeg", "grotto/Messenger_creation_1bb2cd8b-bb68-46c7-8a63-52aff8a9aec8.jpeg", "grotto/Messenger_creation_101e8f27-ce80-44d5-aea2-104384bdd6a4.jpeg", "grotto/Messenger_creation_332e9ea7-a561-4558-8a0c-e12252f9d4fa.jpeg", "grotto/Messenger_creation_94d617db-6c14-4fc4-b594-6f627aa9790e.jpeg", "grotto/Messenger_creation_48d840f6-b219-4f5d-9cac-1f911461c25b.jpeg", "grotto/Messenger_creation_11b0ee40-4e39-4932-be63-3dbb3050694c.jpeg", "grotto/Messenger_creation_854246e7-a261-40c1-ad54-b47c42ea182c.jpeg", "grotto/Messenger_creation_ab36cbe0-7608-4caa-b87b-d24eeec5ccb9.jpeg", "grotto/Messenger_creation_553b1f6f-ed30-4503-b1fe-aa3ad7623473.jpeg", "grotto/Messenger_creation_5bb0791b-1ca4-4bd0-8d1a-9efc354cf85f.jpeg", "grotto/Messenger_creation_e3ab10c6-0b68-4b89-a264-b0f1eeebaea8.jpeg", "grotto/Messenger_creation_b9732a6d-49c3-4cc2-af14-a6a37d156565.jpeg", "grotto/Messenger_creation_be0eb2b6-f0c5-4936-aa29-a8dc1ca5ba2b.jpeg", "grotto/Messenger_creation_91cc5597-cd21-4171-b572-75bd911d0f41.jpeg", "grotto/Messenger_creation_c4f710f9-c2a3-4f27-914a-8473c91ffbb3.jpeg", "grotto/Messenger_creation_09b1b47b-9b8d-4fd6-a407-2ee754bb4d37.jpeg"], 
+                   "2": [],
+                   "3": ["grr/Messenger_creation_f53f4222-5d5c-4ddc-b3be-8bd94516bd40.jpeg", "grr/Messenger_creation_2806c70d-bb08-425a-af05-dc7bac3cfe81.jpeg"],
+                   "4": ["gneiss-banks/20240625_203638.jpg", "gneiss-banks/20240625_203611.jpg", "gneiss-banks/20240625_203559.jpg", "gneiss-banks/20240625_203217.jpg", "gneiss-banks/20240625_203607.jpg", "gneiss-banks/20240625_203616.jpg", "gneiss-banks/20240625_203614.jpg", "gneiss-banks/20240625_203539.jpg", "gneiss-banks/20240625_203513.jpg", "gneiss-banks/20240625_203525.jpg", "gneiss-banks/20240625_203244.jpg", "gneiss-banks/20240625_203537.jpg", "gneiss-banks/20240625_203455.jpg", "gneiss-banks/20240625_203454.jpg", "gneiss-banks/20240625_203235.jpg", "gneiss-banks/20240625_203623.jpg", "gneiss-banks/20240625_203636.jpg", "gneiss-banks/20240625_203543.jpg"],
+                   "5": ["gneiss-hill/20240622_220446.jpg", "gneiss-hill/20240622_220445.jpg", "gneiss-hill/20240622_220451.jpg", "gneiss-hill/20240622_220436.jpg", "gneiss-hill/20240622_215528.jpg", "gneiss-hill/20240622_220432.jpg", "gneiss-hill/20240622_215525.jpg", "gneiss-hill/20240622_220439.jpg", "gneiss-hill/20240622_215454.jpg", "gneiss-hill/20240622_215551.jpg", "gneiss-hill/20240622_220449.jpg", "gneiss-hill/20240622_220458.jpg"],
+                   "6": ["basecamp/Messenger_creation_896d3ff6-3681-4fc2-a273-3d94d29b1109.jpeg", "basecamp/Messenger_creation_e676ba9d-e9d6-4d1b-9f44-345e5dcbae52.jpeg", "basecamp/Messenger_creation_bf6b566f-89cd-4f54-b984-5961824303f8.jpeg"]
                  }
 
 map_id_to_folder_name = {
@@ -33,98 +36,542 @@ map_id_to_folder_name = {
     "2": "uog",
     "3": "grr",
     "4": "gneiss-banks",
-    "5": "gneiss-hill"
+    "5": "gneiss-hill",
+    "6": "basecamp"
 }
 
 gym_routes = {
     "1": [
         {
             "id": 1,
-            "climb_name": "Helicopter",
+            "climb_name": "Speedy Ascent",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V5",
+            "climb_type": "slab",
+            "hold_type": "crimps",
+            "description": "Fast ascent on technical slab with small holds."
+        },
+        {
+            "id": 2,
+            "climb_name": "Echoing Heights",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V7",
+            "climb_type": "overhang",
+            "hold_type": "pinches",
+            "description": "High-reaching climb on echoing overhang with pinch grips."
+        },
+        {
+            "id": 3,
+            "climb_name": "Dynamic Rush",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V6",
+            "climb_type": "dynamic",
+            "hold_type": "slopers",
+            "description": "Energetic climb with dynamic moves on sloping holds."
+        },
+        {
+            "id": 4,
+            "climb_name": "Guelph Granite",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V4",
+            "climb_type": "slab",
+            "hold_type": "jugs",
+            "description": "Smooth ascent on Guelph's distinctive granite with large jug holds."
+        },
+        {
+            "id": 5,
+            "climb_name": "Toppling Heights",
             "gym_name": "The Guelph Grotto",
             "gym_id": "1",
             "v_rating": "V3",
-            "climb_type": "dyno",
-            "hold_type": "crimps",
-            "description": "Fun and cool",
+            "climb_type": "overhang",
+            "hold_type": "pockets",
+            "description": "Challenging climb on steep terrain with pocket holds."
         },
         {
-            "id": 2,
-            "climb_name": "Precise and gentle",
+            "id": 6,
+            "climb_name": "Urban Traverse",
             "gym_name": "The Guelph Grotto",
             "gym_id": "1",
-            "v_rating": "V2",
+            "v_rating": "V8",
+            "climb_type": "slab",
+            "hold_type": "volumes",
+            "description": "Traverse through city-inspired volumes on technical slab."
+        },
+        {
+            "id": 7,
+            "climb_name": "Downtown Dyno",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V10",
+            "climb_type": "dynamic",
+            "hold_type": "crimps",
+            "description": "Dynamic ascent through downtown-themed crimps."
+        },
+        {
+            "id": 8,
+            "climb_name": "Grotto Grandeur",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V9",
             "climb_type": "overhang",
             "hold_type": "pinches",
-            "description": "Fun and exciting",
+            "description": "Grand overhang ascent with pinches at The Guelph Grotto."
         },
-    ],
-    "2": [
         {
-            "id": 1,
-            "climb_name": "Who is next",
-            "gym_name": "Guelph Athletics Center",
-            "gym_id": "2",
-            "v_rating": "V7",
+            "id": 9,
+            "climb_name": "Riverside Rhythm",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V11",
+            "climb_type": "slab",
+            "hold_type": "slopers",
+            "description": "Flowing slab climb with rhythmic sloping holds."
+        },
+        {
+            "id": 10,
+            "climb_name": "Arboretum Ascent",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V12",
             "climb_type": "overhang",
-            "hold_type": "crimps",
-            "description": "Powerful",
+            "hold_type": "jugs",
+            "description": "Elevated climb amidst arboreal overhang with large jug holds."
         },
         {
-            "id": 2,
-            "climb_name": "Why slab or not",
-            "gym_name": "Guelph Athletics Center",
-            "gym_id": "2",
+            "id": 11,
+            "climb_name": "Stone Arch",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V13",
+            "climb_type": "dynamic",
+            "hold_type": "pockets",
+            "description": "Arch-shaped dynamic climb with challenging pocket holds."
+        },
+        {
+            "id": 12,
+            "climb_name": "Royal City Ridge",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V14",
+            "climb_type": "slab",
+            "hold_type": "volumes",
+            "description": "Regal ascent along ridge-themed volumes on slab."
+        },
+        {
+            "id": 13,
+            "climb_name": "Speed River Summit",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V6",
+            "climb_type": "slab",
+            "hold_type": "crimps",
+            "description": "Swift ascent with small crimps along Speed River."
+        },
+        {
+            "id": 14,
+            "climb_name": "Willow Whippers",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V8",
+            "climb_type": "overhang",
+            "hold_type": "pinches",
+            "description": "Challenging ascent with whipper pinches on overhang."
+        },
+        {
+            "id": 15,
+            "climb_name": "Stonewall Step",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V7",
+            "climb_type": "dynamic",
+            "hold_type": "slopers",
+            "description": "Dynamic climb with strategic steps on stonewall slopers."
+        },
+        {
+            "id": 16,
+            "climb_name": "Guelph Gravel",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
             "v_rating": "V5",
             "climb_type": "slab",
-            "hold_type": "small or big",
-            "description": "Cool climb",
+            "hold_type": "jugs",
+            "description": "Smooth ascent on gravel-themed slab with large jug holds."
         },
         {
-            "id": 3,
-            "climb_name": "Spin and more",
-            "gym_name": "Guelph Athletics Center",
-            "gym_id": "2",
-            "v_rating": "V2",
+            "id": 17,
+            "climb_name": "Riverside Rapids",
+            "gym_name": "The Guelph Grotto",
+            "gym_id": "1",
+            "v_rating": "V4",
             "climb_type": "overhang",
-            "hold_type": "crimps",
-            "description": "Fun and exciting",
-        },
+            "hold_type": "pockets",
+            "description": "Rapid ascent through challenging pockets along riverside."
+        }
     ],
+    "2": [],
     "3": [
         {
             "id": 1,
-            "climb_name": "Why me again?",
+            "climb_name": "Waterloo Summit",
             "gym_name": "Grand River Rocks",
             "gym_id": "3",
-            "v_rating": "V5",
-            "climb_type": "overhang",
+            "v_rating": "V6",
+            "climb_type": "slab",
             "hold_type": "crimps",
-            "description": "Smile and pray",
+            "description": "Reach the summit on technical slab with small crimps."
         },
         {
             "id": 2,
-            "climb_name": "Is this a V4",
+            "climb_name": "Laurier Ledge",
             "gym_name": "Grand River Rocks",
             "gym_id": "3",
-            "v_rating": "V4",
+            "v_rating": "V8",
             "climb_type": "overhang",
-            "hold_type": "jugs",
-            "description": "Footwork",
+            "hold_type": "pinches",
+            "description": "Navigate the ledge with challenging pinches on overhang."
+        }
+    ],
+    "4": [
+        {
+            "id": 1,
+            "climb_name": "Coastal Granite",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V5",
+            "climb_type": "slab",
+            "hold_type": "crimps",
+            "description": "Technical slab route on coastal granite."
+        },
+        {
+            "id": 2,
+            "climb_name": "Whistler Peak",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V7",
+            "climb_type": "overhang",
+            "hold_type": "pinches",
+            "description": "Challenging overhang resembling Whistler Peak."
         },
         {
             "id": 3,
-            "climb_name": "Try me",
-            "gym_name": "Grand River Rocks",
-            "gym_id": "3",
-            "v_rating": "V2",
+            "climb_name": "Pacific Crest",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V6",
+            "climb_type": "dynamic",
+            "hold_type": "slopers",
+            "description": "Dynamic route along the Pacific Crest."
+        },
+        {
+            "id": 4,
+            "climb_name": "Fraser River Gorge",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V4",
+            "climb_type": "slab",
+            "hold_type": "jugs",
+            "description": "Scenic climb in the Fraser River Gorge area."
+        },
+        {
+            "id": 5,
+            "climb_name": "Vancouver Island",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V3",
+            "climb_type": "overhang",
+            "hold_type": "pockets",
+            "description": "Exciting climb on Vancouver Island's rocky terrain."
+        },
+        {
+            "id": 6,
+            "climb_name": "Squamish Chief",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V8",
+            "climb_type": "slab",
+            "hold_type": "volumes",
+            "description": "Challenging slab climb like the Squamish Chief."
+        },
+        {
+            "id": 7,
+            "climb_name": "Rocky Mountain High",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V10",
+            "climb_type": "dynamic",
+            "hold_type": "crimps",
+            "description": "Elevated dynamic route in the Rockies."
+        },
+        {
+            "id": 8,
+            "climb_name": "Selkirk Alpine",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V9",
+            "climb_type": "overhang",
+            "hold_type": "pinches",
+            "description": "Alpine overhang reminiscent of the Selkirk Mountains."
+        },
+        {
+            "id": 9,
+            "climb_name": "Canadian Shield",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V11",
             "climb_type": "slab",
             "hold_type": "slopers",
-            "description": "Enjoy and relax",
+            "description": "Technical slab climb resembling the Canadian Shield."
         },
+        {
+            "id": 10,
+            "climb_name": "Kootenay River",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V12",
+            "climb_type": "overhang",
+            "hold_type": "jugs",
+            "description": "Flowing overhang inspired by the Kootenay River."
+        },
+        {
+            "id": 11,
+            "climb_name": "Bugaboos Alpine",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V13",
+            "climb_type": "dynamic",
+            "hold_type": "pockets",
+            "description": "Dynamic pockets in an alpine setting like the Bugaboos."
+        },
+        {
+            "id": 12,
+            "climb_name": "Okanagan Valley",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V14",
+            "climb_type": "slab",
+            "hold_type": "volumes",
+            "description": "Balanced movements on volume holds from the Okanagan Valley."
+        },
+        {
+            "id": 13,
+            "climb_name": "Cascade Range",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V6",
+            "climb_type": "slab",
+            "hold_type": "crimps",
+            "description": "Technical slab climb in the Cascade Range."
+        },
+        {
+            "id": 14,
+            "climb_name": "Golden Ears Summit",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V8",
+            "climb_type": "overhang",
+            "hold_type": "pinches",
+            "description": "Overhanging route with a summit view like Golden Ears."
+        },
+        {
+            "id": 15,
+            "climb_name": "Icefields Parkway",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V7",
+            "climb_type": "dynamic",
+            "hold_type": "slopers",
+            "description": "Dynamic route along the Icefields Parkway."
+        },
+        {
+            "id": 16,
+            "climb_name": "Castle Crags",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V5",
+            "climb_type": "slab",
+            "hold_type": "jugs",
+            "description": "Easy climb with large jug holds at Castle Crags."
+        },
+        {
+            "id": 17,
+            "climb_name": "Mount Robson",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V4",
+            "climb_type": "overhang",
+            "hold_type": "pockets",
+            "description": "Challenging pockets inspired by Mount Robson."
+        },
+        {
+            "id": 18,
+            "climb_name": "Fraser River Canyon",
+            "gym_name": "Gneiss Climbing - OG Banks",
+            "gym_id": "4",
+            "v_rating": "V9",
+            "climb_type": "slab",
+            "hold_type": "volumes",
+            "description": "Delicate movements on volume holds in Fraser River Canyon."
+        }
     ],
-    "4": [],
-    "5": []
+    "5": [
+        {
+            "id": 1,
+            "climb_name": "Zenith",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V5",
+            "climb_type": "slab",
+            "hold_type": "crimps",
+            "description": "Technical climb with small holds."
+        },
+        {
+            "id": 2,
+            "climb_name": "Gravity",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V7",
+            "climb_type": "overhang",
+            "hold_type": "pinches",
+            "description": "Powerful overhanging route with pinch grips."
+        },
+        {
+            "id": 3,
+            "climb_name": "Serenity",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V6",
+            "climb_type": "dynamic",
+            "hold_type": "slopers",
+            "description": "Dynamic moves on sloping holds."
+        },
+        {
+            "id": 4,
+            "climb_name": "Echo",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V4",
+            "climb_type": "slab",
+            "hold_type": "jugs",
+            "description": "Easy climb with large jug holds."
+        },
+        {
+            "id": 5,
+            "climb_name": "Apex",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V3",
+            "climb_type": "overhang",
+            "hold_type": "pockets",
+            "description": "Challenging pockets on steep terrain."
+        },
+        {
+            "id": 6,
+            "climb_name": "Breeze",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V8",
+            "climb_type": "slab",
+            "hold_type": "volumes",
+            "description": "Delicate movements on volume holds."
+        },
+        {
+            "id": 7,
+            "climb_name": "Zephyr",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V10",
+            "climb_type": "dynamic",
+            "hold_type": "crimps",
+            "description": "Powerful and dynamic crimp route."
+        },
+        {
+            "id": 8,
+            "climb_name": "Pinnacle",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V9",
+            "climb_type": "overhang",
+            "hold_type": "pinches",
+            "description": "High-intensity pinch route."
+        },
+        {
+            "id": 9,
+            "climb_name": "Crest",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V11",
+            "climb_type": "slab",
+            "hold_type": "slopers",
+            "description": "Technical slab with sloping holds."
+        },
+        {
+            "id": 10,
+            "climb_name": "Summit",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V12",
+            "climb_type": "overhang",
+            "hold_type": "jugs",
+            "description": "Strenuous overhang with large jug holds."
+        },
+        {
+            "id": 11,
+            "climb_name": "Cascade",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V13",
+            "climb_type": "dynamic",
+            "hold_type": "pockets",
+            "description": "Dynamic moves on pocket holds."
+        },
+        {
+            "id": 12,
+            "climb_name": "Ridge",
+            "gym_name": "Gneiss Climbing - Hill Security",
+            "gym_id": "5",
+            "v_rating": "V14",
+            "climb_type": "slab",
+            "hold_type": "volumes",
+            "description": "Balanced movements on volume holds."
+        }
+    ],
+    "6": [
+        {
+            "id": 1,
+            "climb_name": "Cityscape Crux",
+            "gym_name": "Basecamp Climbing - Toronto",
+            "gym_id": "6",
+            "v_rating": "V6",
+            "climb_type": "overhang",
+            "hold_type": "slopers",
+            "description": "Navigate the cityscape crux on sloping overhang holds."
+        },
+        {
+            "id": 2,
+            "climb_name": "Lakefront Ledge",
+            "gym_name": "Basecamp Climbing - Toronto",
+            "gym_id": "6",
+            "v_rating": "V8",
+            "climb_type": "slab",
+            "hold_type": "jugs",
+            "description": "Ascend to the lakefront ledge on easy slab with large jug holds."
+        },
+        {
+            "id": 3,
+            "climb_name": "Rooftop Dyno",
+            "gym_name": "Basecamp Climbing - Toronto",
+            "gym_id": "6",
+            "v_rating": "V9",
+            "climb_type": "dynamic",
+            "hold_type": "pockets",
+            "description": "Dynamic moves to the rooftop dyno with challenging pocket holds."
+        }
+    ]
 }
 
 gyms_info = {
@@ -162,6 +609,13 @@ gyms_info = {
         "logo_image_url": "https://littlebuildingsolutions.com/wp-content/uploads/testimonial-image-gneissclimbing.png",
         "lat": 49.896709226472915,
         "lng": -119.48772919235698,
+    },
+    "6": {
+        "id": 6,
+        "gym_name": "Basecamp Climbing - Toronto",
+        "logo_image_url": "https://mma.prnewswire.com/media/1097214/Basecamp_Climbing_Basecamp_Climbing_Opens_Second_Location_in_Tor.jpg?w=200",
+        "lat": 43.64996207530534, 
+        "lng": -79.39762343317936,
     }
 }
 
@@ -207,6 +661,7 @@ def generate_signed_url(file_name_path):
 @app.route('/routes', methods=['GET'])
 def get_routes():
     gym = str(request.args.get('gym'))
+    print(gym)
 
     if gym == "all":
         # return all the routes
@@ -221,7 +676,7 @@ def get_routes():
                 counter += 1
     else:
         climbs_to_update = gym_routes.get(gym, [])
-       
+
         counter = 0
         for route in climbs_to_update:
             image_url = generate_signed_url(gym_routes_arr[gym][counter])
@@ -229,10 +684,10 @@ def get_routes():
             counter += 1
         
         result = {gym: climbs_to_update}
-        print(result)
+        # print(result)
         return result
 
-    print(gym_routes)
+    # print(gym_routes)
     return gym_routes, 200
 
 @app.route('/gyms', methods=['GET'])
@@ -246,7 +701,7 @@ def get_gyms():
         gym["indoor_map_url"] = url_indoor_map
         gym["url_custom_gym_header"] = url_custom_gym_header
 
-    print(gyms_info)
+    # print(gyms_info)
     return gyms_info, 200
 
 @app.route('/store_climb', methods=['POST'])
@@ -293,5 +748,5 @@ def store_climb():
         print(f"ID '{gym_id}' not found. Can't store the climb")
         return "Failure. Can't store the climb", 400
 
-    print(gym_routes)
+    # print(gym_routes)
     return "Success", 200
