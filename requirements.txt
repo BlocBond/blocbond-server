@@ -9,4 +9,5 @@ google==3.0.0
 soupsieve==2.5
 google.cloud==0.34.0
 google-cloud-storage==2.16.0
+google-cloud-firestore
 timedelta==2020.12.3

@@ -1,5 +1,5 @@
 import bcrypt
-from src.app import app
+from src.app import app, db
 from flask import request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required
 import json
@@ -14,27 +14,36 @@ def authenticate():
 
     username = data.get('username')
     password = data.get('password')
-    print(username)
+    print('Sign in attempt: ', username)
+
     if not username or not password:
         return jsonify({'error': 'Username and password are required'}), 400
-    token = create_access_token(identity=username, expires_delta=False)
-    if username not in users:
-        print('New default account created')
+    
+    user_doc = db.collection('users').document(username).get()
+    if user_doc.exists:
+        # Existing user login
+        user_data = user_doc.to_dict()
+        if not user_data:
+            return jsonify({'error': 'Invalid user data'}), 500
 
-        # Hash the password before storing it
-        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-
-        # Store the user in the dictionary (in the future we will use database)
-        users[username] = {'username': username, 'password': hashed_password, 'google': False}  
-
-        return jsonify({'message': 'Success', 'token': token}), 201
-    else:
-        if bcrypt.checkpw(password.encode('utf-8'), users[username]["password"].encode('utf-8')):
-            print('Signed in with existing default account')
-
+        if bcrypt.checkpw(password.encode('utf-8'), user_data['password'].encode('utf-8')):
+            token = create_access_token(identity=username, expires_delta=False)
             return jsonify({'message': 'Success', 'token': token}), 200
         
-    return jsonify({'message': 'Unable to authenticate', 'token': None}), 403
+        return jsonify({'message': 'Incorrect password', 'token': None}), 403
+    else:
+        # New user registration
+        print('New default account created: ', username)
+
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        db.collection('users').document(username).set({
+            'username': username,
+            'password': hashed_password,
+        })
+
+        token = create_access_token(identity=username, expires_delta=False)
+        return jsonify({'message': 'Success', 'token': token}), 201
+
 
 @app.route('/google_authenticated', methods=['POST'])
 def authenticated_user_data():
